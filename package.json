@@ -1,0 +1,30 @@
+{
+  "name": "FeatureFlagTech-node",
+  "version": "0.0.0",
+  "description": "Node client for featureflag.tech",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test/unitTests.js"
+  },
+  "keywords": [
+    "featureflag",
+    "feature flag",
+    "feature flags",
+    "feature switch",
+    "feature switches"
+  ],
+  "author": "Tom Maslen",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1",
+    "sinon": "^7.2.7"
+  },
+  "dependencies": {
+    "simple-get": ">=4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/featureflagtech/featureflagtech-node"
+  }
+}
