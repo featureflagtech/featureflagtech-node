@@ -1,7 +1,7 @@
 const assert = require( "chai" ).assert;
 const expect = require( "chai" ).expect;
 const sinon  = require( "sinon" );
-const get    = require( "simple-get" );
+const get    = require( "../lib/simple-get" );
 
 const F2T = require( "../index" );
 
