@@ -21,7 +21,7 @@
     "sinon": "^7.2.7"
   },
   "dependencies": {
-    "simple-get": ">=4.0.0"
+    "simple-get": "^3.0.3"
   },
   "repository": {
     "type": "git",
