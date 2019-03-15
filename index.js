@@ -14,6 +14,7 @@ const F2T = function ( opts, localFeatureFlags ) {
 	this.environment = opts.environment;
 	this.apiKey = opts.apiKey;
 	this._features = localFeatureFlags || {};
+	this._domain = opts._domain || "api.featureflag.tech";
 };
 
 F2T.prototype = {
@@ -45,7 +46,7 @@ F2T.prototype = {
 		return new Promise( ( resolve, reject ) => {
 
 			get.concat( {
-				"url": `https://api.featureflag.tech/v1/${this.userId}/${this.projectName}/${this.environment}`,
+				"url": `https://${this._domain}/v1/${this.userId}/${this.projectName}/${this.environment}`,
 				"json": true,
 				"headers": {
 					"fft-api-key": this.apiKey
