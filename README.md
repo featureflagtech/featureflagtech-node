@@ -44,12 +44,12 @@ const FeatureFlagTechClient = require( "featureflagtech-node" );
 
 const f2t = new FeatureFlagTechClient({
   userId: "fe7a7fda-d396-45a1-8027-8700f25b24a4",
-  project: "example.com",
-  env: "live",
+  projectName: "example.com",
+  environment: "live",
   apiKey: "b6b3f5c8-c7ce-48c4-a1a2-0e0e43be626c"
 });
 
-f2t.getSourceFile().then( () => {
+f2t.getFlag().then( () => {
 
 	f2t.when( "newFeature" )
 		.is( true, () => {
