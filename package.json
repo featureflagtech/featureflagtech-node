@@ -1,5 +1,5 @@
 {
-  "name": "FeatureFlagTech-node",
+  "name": "featureflagtech-node",
   "version": "0.0.0",
   "description": "Node client for featureflag.tech",
   "main": "index.js",
