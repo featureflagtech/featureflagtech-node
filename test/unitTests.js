@@ -97,7 +97,7 @@ describe( "F2T", () => {
 			await fft.getFlag();
 
 			expect( mockedGetConcat.calledWith({
-				url: "https://api.featureflag.tech/v1/userId/projectName/env",
+				url: "https://api.featureflag.tech/userId/projectName/env",
 				json: true,
 				headers: {
 					"fft-api-key": "123456"
