@@ -43,9 +43,6 @@ npm install featureflagtech-node --save
 const FeatureFlagTechClient = require( "featureflagtech-node" );
 
 const f2t = new FeatureFlagTechClient({
-  userId: "fe7a7fda-d396-45a1-8027-8700f25b24a4",
-  projectName: "example.com",
-  environment: "live",
   apiKey: "b6b3f5c8-c7ce-48c4-a1a2-0e0e43be626c"
 });
 
@@ -83,7 +80,9 @@ const FeatureFlagTechClient = require( "featureflagtech-node" );
 
 const f2t = 
 	new FeatureFlagTechClient(
-		"http://featureflag.tech/node/exampleflag.json",
+		{
+			apiKey: "b6b3f5c8-c7ce-48c4-a1a2-0e0e43be626c"
+		},
 		{
 			"falseBoolean": req.param( "falseBooleanOverride" ) || null
 		}

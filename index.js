@@ -46,7 +46,7 @@ F2T.prototype = {
 		return new Promise( ( resolve, reject ) => {
 
 			get.concat( {
-				"url": `https://${this._domain}/${this.userId}/${this.projectName}/${this.environment}`,
+				"url": `https://${this._domain}`,
 				"json": true,
 				"headers": {
 					"fft-api-key": this.apiKey

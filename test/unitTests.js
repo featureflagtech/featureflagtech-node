@@ -74,7 +74,7 @@ describe( "F2T", () => {
 
 	describe( "Constructor method", () => {
 
-    it( "Sets properties required for API call", async () => {
+    	it( "Sets properties required for API call", async () => {
 
 			mockedGetConcat.yields(
 				null,
@@ -88,16 +88,13 @@ describe( "F2T", () => {
 			);
 
 			let fft = new F2T({
-				userId: "userId",
-				projectName: "projectName",
-				environment: "env",
 				apiKey: "123456"
 			});
 
 			await fft.getFlag();
 
 			expect( mockedGetConcat.calledWith({
-				url: "https://api.featureflag.tech/userId/projectName/env",
+				url: "https://api.featureflag.tech",
 				json: true,
 				headers: {
 					"fft-api-key": "123456"
