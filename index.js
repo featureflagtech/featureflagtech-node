@@ -9,9 +9,6 @@ EmptyF2T.prototype = {
 
 const F2T = function ( opts, localFeatureFlags ) {
 	this._emptyF2T = new EmptyF2T();
-	this.userId = opts.userId;
-	this.projectName = opts.projectName;
-	this.environment = opts.environment;
 	this.apiKey = opts.apiKey;
 	this._features = localFeatureFlags || {};
 	this._domain = opts._domain || "api.featureflag.tech";
@@ -42,7 +39,7 @@ F2T.prototype = {
 	"else": function ( callback ) {
 		callback();
 	},
-	"getFlag": function () {
+	"getFlag": async function () {
 		return new Promise( ( resolve, reject ) => {
 
 			get.concat( {
