@@ -75,6 +75,58 @@ describe( "F2T", () => {
 
 		});
 
+		it( "Requesting flag values multiple times returns up to date changes to flag values", async () => {
+
+			// Set value first
+			// time
+			mockedGetConcat.yields( null, { "statusCode": 200 }, {
+				"foo": true
+			} );
+
+			const f2t = new F2T( {}, { "bar": true } );
+
+			// Get value and assert 
+			// first time
+			await f2t.getFlag();
+			expect( f2t.get( "foo" ) ).to.be.true;
+			
+			// Change the value, 
+			// get value and assert 
+			// second time
+			mockedGetConcat.yields( null, { "statusCode": 200 }, {
+				"foo": false
+			} );
+			await f2t.getFlag();
+			expect( f2t.get( "foo" ) ).to.be.false;
+
+		});
+
+		it( "Requesting flag values multiple times does not write over override values", async () => {
+
+			// Set value first
+			// time
+			mockedGetConcat.yields( null, { "statusCode": 200 }, {
+				"bar": true
+			} );
+
+			const f2t = new F2T( {}, { "bar": true } );
+
+			// Get value and assert 
+			// first time
+			await f2t.getFlag();
+			expect( f2t.get( "bar" ) ).to.be.true;
+			
+			// Change the value, 
+			// get value and assert 
+			// second time
+			mockedGetConcat.yields( null, { "statusCode": 200 }, {
+				"bar": false
+			} );
+			await f2t.getFlag();
+			expect( f2t.get( "bar" ) ).to.be.true;
+
+		});
+
 		it( "Should return a rejected promise if source file is 404", ( done ) => {
 
 			mockedGetConcat.yields(

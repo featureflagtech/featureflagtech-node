@@ -7,14 +7,24 @@ EmptyF2T.prototype = {
 	"else": function() {}
 }
 
-const F2T = function ( opts, localFeatureFlags ) {
+const F2T = function ( opts, featureFlagOverrides ) {
 	this._emptyF2T = new EmptyF2T();
 	this.apiKey = opts.apiKey;
-	this._features = localFeatureFlags || {};
+	this._features = {};
+	this._featureFlagOverrides = featureFlagOverrides || {};
+	this.addValuesToFeatures( this._featureFlagOverrides );
 	this._domain = opts._domain || "api.featureflag.tech";
 };
 
 F2T.prototype = {
+	"addValuesToFeatures": function ( newValues ) {
+		Object.keys( newValues ).forEach( ( key ) => {
+			this._features[ key ] = newValues[ key ];
+		});
+	},
+	"removeAllValuesFromFeatures": function () {
+		this._features = {};
+	},
 	"_whenedFeature": null,
 	"get": function ( feature ) {
 		if ( feature in this._features ) {
@@ -53,9 +63,9 @@ F2T.prototype = {
 					reject( err || new Error( "Source file not found" ) );
 					return;
 				}
-				Object.keys( data ).forEach( ( key ) => {
-					this._features[ key ] = ( key in this._features ) ? this._features[ key ] : data[ key ];
-				});
+				this.removeAllValuesFromFeatures();
+				this.addValuesToFeatures( data );
+				this.addValuesToFeatures( this._featureFlagOverrides );
 				resolve();
 			})
 
