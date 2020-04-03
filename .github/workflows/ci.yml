@@ -1,0 +1,12 @@
+name: featureflagtech-node
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Test
+      run: echo 'Hello world!'
