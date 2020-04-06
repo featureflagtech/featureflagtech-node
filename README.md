@@ -2,6 +2,9 @@
 
 Official NodeJS client for [featureflag.tech](https://featureflag.tech).
 
+## Workflow Status
+![](https://github.com/featureflagtech/featureflagtech-node/workflows/featureflag-node-workflow/badge.svg)
+
 Features:
 
  * Stops you from littering your code with `if` statements.
