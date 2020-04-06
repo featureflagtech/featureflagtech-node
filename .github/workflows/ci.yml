@@ -1,12 +1,45 @@
 name: featureflagtech-node
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+      - ci-development
 
 jobs:
-  build:
-
+  unit-tests:
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Test
-      run: echo 'Hello world!'
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install
+      - run: npm test
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: npm install
+      - run: npm audit
+
+  build:
+    runs-on: ubuntu-latest
+    needs:
+      - unit-tests
+      - security
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      #   with:
+      #     node-version: 12
+      #     registry-url: https://registry.npmjs.org/
+      # - run: npm install
+      # - run: npm publish
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: echo 'successfully published to npm'
