@@ -29,13 +29,14 @@ jobs:
         with:
           localFilePath: '/home/runner/work/featureflagtech-node/featureflagtech-node/package.json'
           publicPackageName: 'featureflagtech-node'
+        continue-on-error: true #temp
       - name: version info
         id: info
         run: echo "Version ${{ steps.check.outputs.publicVersion }} being updated to ${{ steps.check.outputs.localVersion}}"
 
   deploy:
     runs-on: ubuntu-latest
-    needs: tests
+    needs: [tests, version-check]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -46,5 +47,5 @@ jobs:
       # - run: npm publish
       #   env:
       #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - run: npm version patch
+      # - run: npm version patch
       - run: echo 'successfully published to npm'
