@@ -1,4 +1,4 @@
-name: featureflag-node-workflow
+name: Workflow
 
 on:
   push:
@@ -18,6 +18,21 @@ jobs:
       - run: npm test
       - run: npm audit
 
+  version-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - name: compare versions
+        id: check
+        uses: CharlieHodgkinson/VersionChecker@master
+        with:
+          localFilePath: '/home/runner/work/ciTest/ciTest/package.json'
+          publicPackageName: 'featureflagtech-node'
+      - name: version info
+        id: info
+        run: echo "Version ${{ steps.check.outputs.publicVersion }} being updated to ${{ steps.check.outputs.localVersion}}"
+
   deploy:
     runs-on: ubuntu-latest
     needs: tests
@@ -31,4 +46,5 @@ jobs:
       # - run: npm publish
       #   env:
       #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm version patch
       - run: echo 'successfully published to npm'
