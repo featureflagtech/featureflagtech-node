@@ -29,7 +29,6 @@ jobs:
         with:
           localFilePath: '/home/runner/work/featureflagtech-node/featureflagtech-node/package.json'
           publicPackageName: 'featureflagtech-node'
-        continue-on-error: true #temp
       - name: version info
         id: info
         run: echo "Version ${{ steps.check.outputs.publicVersion }} being updated to ${{ steps.check.outputs.localVersion}}"
@@ -42,10 +41,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      #     registry-url: https://registry.npmjs.org/
-      # - run: npm install
-      # - run: npm publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      # - run: npm version patch
+          registry-url: https://registry.npmjs.org/
+      - run: npm install
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: echo 'successfully published to npm'
