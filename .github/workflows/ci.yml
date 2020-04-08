@@ -27,7 +27,7 @@ jobs:
         id: check
         uses: CharlieHodgkinson/VersionChecker@master
         with:
-          localFilePath: '/home/runner/work/ciTest/ciTest/package.json'
+          localFilePath: '/home/runner/work/featureflagtech-node/featureflagtech-node/package.json'
           publicPackageName: 'featureflagtech-node'
       - name: version info
         id: info
