@@ -1,6 +1,6 @@
 # featureflagtech-node
 
-![Workflow status badge](https://github.com/featureflagtech/featureflagtech-node/workflows/featureflag-node-workflow/badge.svg?branch=ci-development)
+![Workflow status badge](https://github.com/featureflagtech/featureflagtech-node/workflows/featureflag-node-workflow/badge.svg)
 
 Official NodeJS client for [featureflag.tech](https://featureflag.tech).
 
