@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: compare versions
         id: check
-        uses: CharlieHodgkinson/VersionChecker@master
+        uses: tmaslen/VersionChecker@master
         with:
           localFilePath: '/home/runner/work/featureflagtech-node/featureflagtech-node/package.json'
           publicPackageName: 'featureflagtech-node'
