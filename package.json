@@ -1,6 +1,6 @@
 {
   "name": "featureflagtech-node",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Node client for featureflag.tech",
   "main": "index.js",
   "scripts": {
