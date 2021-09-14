@@ -60,7 +60,7 @@ F2T.prototype = {
 				}
 			}, ( err, res, data ) => {
 				if ( err || ( res.statusCode != 200 ) ) {
-					reject( err || new Error( "Source file not found" ) );
+					reject( err || new Error( "featureflag.tech: API key not recognised" ) );
 					return;
 				}
 				this.removeAllValuesFromFeatures();
